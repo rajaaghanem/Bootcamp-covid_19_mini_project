@@ -1,5 +1,5 @@
-import { getConteintData } from "./conteint.js";
-import { buildChart } from "./graph.js";
+import { addSelectionCountry, getConteintData, select } from "./conteint.js";
+import { buildChart, myChart } from "./graph.js";
 
 // const { default: axios } = require("axios");
 // const asiaSet = new Set();
@@ -26,7 +26,7 @@ export const conteintObj = {
   africa: [0, 0, 0, 0],
   americas: [0, 0, 0, 0],
   europe: [0, 0, 0, 0],
-  oceania: [0, 0, 0, 0],
+  australia: [0, 0, 0, 0],
   totalDeaths: 0,
   totalConfirmed: 0,
   totalCritical: 0,
@@ -65,16 +65,22 @@ export const conteintObj = {
   addToHash(results[1].data, "africa");
   addToHash(results[2].data, "americas");
   addToHash(results[3].data, "europe");
-  addToHash(results[4].data, "oceania");
+  addToHash(results[4].data, "australia");
 
   calcWorldData(results[5].data.data);
   flagLoad = true;
 })();
 
 // adding the code contry as a key & the conteint as the value for every contry.
-function addToHash(resultsArray, contientNum) {
+function addToHash(resultsArray, contientName) {
   for (let i = 0; i < resultsArray.length; i++) {
-    conteintMap.set(resultsArray[i].cca2, contientNum);
+    conteintMap.set(resultsArray[i].cca2, contientName);
+    // console.log(resultsArray[i].name.common, contientName, resultsArray[i].cca2);
+    addSelectionCountry(
+      resultsArray[i].name.common,
+      contientName,
+      resultsArray[i].cca2
+    );
   }
 }
 
@@ -94,13 +100,23 @@ function calcWorldData(WorldDataArray) {
     }
   }
   preparingForChart();
-  
-  // console.log(conteintObj);
 }
 
 // preparing the data for chart.
-function preparingForChart(){
-  const dataArr = [conteintObj.totalDeaths,conteintObj.totalConfirmed,conteintObj.totalCritical,conteintObj.totalRecovered];
-  // console.log(dataArr);
-  buildChart(dataArr, 'World');
+function preparingForChart() {
+  const dataArr = [
+    conteintObj.totalDeaths,
+    conteintObj.totalConfirmed,
+    conteintObj.totalCritical,
+    conteintObj.totalRecovered,
+  ];
+  buildChart(dataArr, "World");
 }
+
+const worldBtn = document.querySelector(".world-btn");
+
+worldBtn.addEventListener("click", (e) => {
+  myChart.destroy();
+  preparingForChart();
+  select.classList.add("visibilityHidden");
+});
