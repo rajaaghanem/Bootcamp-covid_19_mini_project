@@ -61,7 +61,7 @@ export function buildBarChart(dataArray, nameOfContient) {
 // creating the country chart.
 export function buildDoughnutChart(dataArray) {
   myChart2 = new Chart(canvasChartCountry, {
-    type: "doughnut",
+    type: "polarArea",
     data: {
       labels: [
         "Deaths",

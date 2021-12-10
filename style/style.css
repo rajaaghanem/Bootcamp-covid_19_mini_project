@@ -23,6 +23,7 @@ body {
 
 .buttons-container {
   display: flex;
+  margin-left: 6rem;
 }
 
 .data_container-select {
