@@ -6,6 +6,7 @@ export const countryContainer = document.querySelector(".country_container");
 
 // select a spicific country
 select.addEventListener("click", (e) => {
+ if(e.target.value)
   getCountryAPI(e.target.value);
   circle.classList.remove("displayNone");
   countryContainer.classList.remove("visibilityHidden");
@@ -19,7 +20,7 @@ async function getCountryAPI(countryCode) {
       `https:///corona-api.com/countries/${countryCode}`
     );
     preparingForCountryChart(countryData.data.data.latest_data);
-  } catch (error) {}
+  } catch (error) {console.log("error here");}
 }
 
 // preparing data for country chart.

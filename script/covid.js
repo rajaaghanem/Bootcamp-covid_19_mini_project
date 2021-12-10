@@ -57,8 +57,8 @@ export const conteintObj = {
 
     calcWorldData(results[5].data.data);
     flagLoad = true;
-    
-  } catch (error) {}
+
+  } catch (error) { console.log("error here");}
 })();
 
 // adding the code contry as a key & the conteint as the value for every contry.
