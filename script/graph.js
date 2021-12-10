@@ -39,6 +39,12 @@ export function buildChart(dataArray, nameOfcontient) {
         ],
       },
       options: {
+        title: {
+            display: 'true',
+            text: 'Custom Chart Title',
+            fontColor: '#333',
+
+        },
         scales: {
           y: {
             beginAtZero: true,

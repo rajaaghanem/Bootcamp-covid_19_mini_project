@@ -1,3 +1,4 @@
+import { getConteintData } from "./conteint.js";
 import { buildChart } from "./graph.js";
 
 // const { default: axios } = require("axios");
@@ -13,17 +14,19 @@ import { buildChart } from "./graph.js";
 //   totalCritical: 0,
 // };
 
+export let flagLoad = false;
+
 // save the code contry as a key & the conteint as the value.
-const conteintMap = new Map();
+export const conteintMap = new Map();
 
 // save the total deaths, confirmed, recovered & critical casses for each conteint.
-const conteintObj = {
+export const conteintObj = {
   // conteint: [totalDeaths, totalConfirmed, totalCritical, totalRecovered].
   asia: [0, 0, 0, 0],
   africa: [0, 0, 0, 0],
   americas: [0, 0, 0, 0],
   europe: [0, 0, 0, 0],
-  Oceania: [0, 0, 0, 0],
+  oceania: [0, 0, 0, 0],
   totalDeaths: 0,
   totalConfirmed: 0,
   totalCritical: 0,
@@ -45,7 +48,7 @@ const conteintObj = {
     "https://intense-mesa-62220.herokuapp.com/https://restcountries.herokuapp.com/api/v1/region/europe"
   );
   const australiaData = axios.get(
-    "https://intense-mesa-62220.herokuapp.com/https://restcountries.herokuapp.com/api/v1/region/Oceania"
+    "https://intense-mesa-62220.herokuapp.com/https://restcountries.herokuapp.com/api/v1/region/oceania"
   );
   const worldData = axios.get("https://corona-api.com/countries");
 
@@ -62,9 +65,10 @@ const conteintObj = {
   addToHash(results[1].data, "africa");
   addToHash(results[2].data, "americas");
   addToHash(results[3].data, "europe");
-  addToHash(results[4].data, "Oceania");
+  addToHash(results[4].data, "oceania");
 
   calcWorldData(results[5].data.data);
+  flagLoad = true;
 })();
 
 // adding the code contry as a key & the conteint as the value for every contry.

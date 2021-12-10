@@ -5,7 +5,7 @@
 .data_container_canvas {
   margin: 4rem;
   width: 50vw;
-  height: 50vh;
+  /* height: 70vh; */
   display: block;
   box-sizing: border-box;
 }
