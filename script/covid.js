@@ -24,6 +24,10 @@ const conteintObj = {
   americas: [0, 0, 0, 0],
   europe: [0, 0, 0, 0],
   Oceania: [0, 0, 0, 0],
+  totalDeaths: 0,
+  totalConfirmed: 0,
+  totalCritical: 0,
+  totalRecovered: 0,
 };
 
 // get the API for all the conteints and the world covid data.
@@ -70,15 +74,29 @@ function addToHash(resultsArray, contientNum) {
   }
 }
 
-// calculate the total deaths, confirmed, recovered & critical casses for each conteint.
+// calculate the total deaths, confirmed, recovered & critical casses for each conteint, and the total for the world.
 function calcWorldData(WorldDataArray) {
   for (let i = 0; i < WorldDataArray.length; i++) {
     const contName = conteintMap.get(`${WorldDataArray[i].code}`);
     if (contName) {
       conteintObj[`${contName}`][0] += WorldDataArray[i].latest_data.deaths;
+      conteintObj.totalDeaths += WorldDataArray[i].latest_data.deaths;
       conteintObj[`${contName}`][1] += WorldDataArray[i].latest_data.confirmed;
+      conteintObj.totalConfirmed += WorldDataArray[i].latest_data.confirmed;
       conteintObj[`${contName}`][2] += WorldDataArray[i].latest_data.critical;
+      conteintObj.totalCritical += WorldDataArray[i].latest_data.critical;
       conteintObj[`${contName}`][3] += WorldDataArray[i].latest_data.recovered;
+      conteintObj.totalRecovered += WorldDataArray[i].latest_data.recovered;
     }
   }
+  preparingForChart();
+  
+  // console.log(conteintObj);
+}
+
+// preparing the data for chart.
+function preparingForChart(){
+  const dataArr = [conteintObj.totalDeaths,conteintObj.totalConfirmed,conteintObj.totalCritical,conteintObj.totalRecovered];
+  // console.log(dataArr);
+  buildChart(dataArr, 'World');
 }

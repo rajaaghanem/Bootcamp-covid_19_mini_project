@@ -1,3 +1,5 @@
+const canvasChart = document.querySelector(".data_container_chart");
+
 export let myChart ="";
 
 // creating the contient chart.
@@ -8,9 +10,9 @@ export function buildChart(dataArray, nameOfcontient) {
       data: {
         labels: [
           "Deaths",
-          "Recovered Cases",
           "Confirmed Cases",
           "Critical Cases",
+          "Recovered Cases",
         ],
         datasets: [
           {
