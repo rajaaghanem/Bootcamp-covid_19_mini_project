@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/my_normalized.css">
+    <link rel="stylesheet" href="./style/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class = "data_container">
+        <div class = "data_container-continent">
+            <button class="Asia-button"> Asia</button>
+            <button>Africa</button>
+            <button>Americas</button>
+            <button>Europe</button>
+            <button>Australia</button>
+
+        </div>
+        <div>   <button class="world-btn">World</button> </div>
+         <div class = "data_container_canvas">
+
+            <canvas class="data_container_chart" ></canvas>
+        </div>
+
+        <select class="data_container-select" placeholder="country">
+            <option value="" disabled selected>select country</option>
+        </select>
+
+        <div class="data_container-selectd-country"></div>
+    </div>
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="./script/covid.js" type="module"></script>
+</html>
