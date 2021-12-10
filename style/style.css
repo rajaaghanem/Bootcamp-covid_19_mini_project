@@ -4,6 +4,34 @@ body {
   align-items: center;
 }
 
+.btn-style {
+  font-size: 1.5rem;
+  margin: 1rem;
+  border-radius: 0.3rem;
+  background-color: rgb(49, 121, 113);
+  color: antiquewhite;
+  border: 0.5rem white;
+  padding: 0.6rem;
+}
+
+.world-btn {
+  background-color: rgba(182, 105, 141, 0.5);
+  color: rgb(88, 68, 68);
+  margin-left: 7rem;
+  width: 12rem;
+}
+
+.buttons-container {
+  display: flex;
+}
+
+.data_container-select {
+  font-size: 1.4rem;
+  background-color: rgba(252, 250, 248, 0.932);
+  padding: 0.6rem;
+  margin-left: 18rem;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -11,7 +39,10 @@ body {
 }
 
 .data_container {
-  margin: 3rem;
+  margin: 2rem;
+  padding: 2rem;
+  background-color: rgb(241, 238, 232);
+  border-radius: 0.7rem;
 }
 
 .data_container_canvas {
@@ -38,6 +69,8 @@ body {
 
 .country_container {
   position: relative;
+  background-color: rgb(241, 238, 232);
+  border-radius: 0.7rem;
 }
 
 .circle {
