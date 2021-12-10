@@ -1,8 +1,9 @@
+import { select } from "./country.js";
 import { conteintMap, conteintObj, flagLoad } from "./covid.js";
-import { buildChart, myChart } from "./graph.js";
+import { buildBarChart, myChart } from "./graph.js";
 
 const dataContainerBtn = document.querySelector(".data_container-continent");
-export const select = document.querySelector("select");
+const dataContainerSelect = document.querySelector(".data_container-select");
 
 dataContainerBtn.addEventListener("click", (e) => {
   if (flagLoad) {
@@ -16,7 +17,7 @@ dataContainerBtn.addEventListener("click", (e) => {
 export function getConteintData(conteintName) {
   let name = conteintName.toLowerCase();
   myChart.destroy();
-  buildChart(conteintObj[`${name}`], `${conteintName}`);
+  buildBarChart(conteintObj[`${name}`], `${conteintName}`);
 }
 
 // display only the countries in the selected conteint in drop down list.
@@ -36,14 +37,12 @@ function displayNone(conteint) {
   }
 }
 
-const dataContainerSelect = document.querySelector(".data_container-select");
-
 // add an opition of the country on html
 export function addSelectionCountry(countryName, contientName, countryCode) {
   const selection = document.createElement("option");
   selection.innerText = countryName;
   selection.classList.add("displayNone");
   selection.setAttribute("data-conteint", contientName);
-  selection.setAttribute("data-code", countryCode);
+  selection.setAttribute("value", countryCode);
   dataContainerSelect.appendChild(selection);
 }

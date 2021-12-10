@@ -22,11 +22,20 @@
         <canvas class="data_container_chart"></canvas>
       </div>
 
-      <select class="data_container-select visibilityHidden" placeholder="country">
-        <option data-id="select country" value="" disabled selected>select country</option>
+      <select
+        class="data_container-select visibilityHidden"
+        placeholder="country"
+      >
+        <option data-id="select country" value="" disabled selected>
+          select country
+        </option>
       </select>
-
-      <div class="data_container-selectd-country"></div>
+    </div>
+    <div class="country_container visibilityHidden">
+      <div class="circle displayNone"></div>
+      <div class="data_container_canvas_country">
+        <canvas class="data_container_chart_country"></canvas>
+      </div>
     </div>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

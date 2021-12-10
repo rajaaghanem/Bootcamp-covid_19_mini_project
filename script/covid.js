@@ -1,23 +1,10 @@
-import { addSelectionCountry, getConteintData, select } from "./conteint.js";
-import { buildChart, myChart } from "./graph.js";
-
-// const { default: axios } = require("axios");
-// const asiaSet = new Set();
-// const africaSet = new Set();
-// const americasSet = new Set();
-// const europeSet = new Set();
-// const australiaSet = new Set();
-// const asia = {
-//   totalDeaths: 0,
-//   totalConfirmed: 0,
-//   totalRecovered: 0,
-//   totalCritical: 0,
-// };
+import { addSelectionCountry, getConteintData } from "./conteint.js";
+import { countryContainer, select } from "./country.js";
+import { buildBarChart, myChart } from "./graph.js";
 
 export let flagLoad = false;
-
-// save the code contry as a key & the conteint as the value.
-export const conteintMap = new Map();
+const worldBtn = document.querySelector(".world-btn");
+export const conteintMap = new Map(); // save the code contry as a key & the conteint as the value.
 
 // save the total deaths, confirmed, recovered & critical casses for each conteint.
 export const conteintObj = {
@@ -110,13 +97,12 @@ function preparingForChart() {
     conteintObj.totalCritical,
     conteintObj.totalRecovered,
   ];
-  buildChart(dataArr, "World");
+  buildBarChart(dataArr, "World");
 }
-
-const worldBtn = document.querySelector(".world-btn");
 
 worldBtn.addEventListener("click", (e) => {
   myChart.destroy();
   preparingForChart();
   select.classList.add("visibilityHidden");
+  countryContainer.classList.add("visibilityHidden");
 });
