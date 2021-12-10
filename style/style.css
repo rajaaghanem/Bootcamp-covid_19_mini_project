@@ -1,9 +1,16 @@
 body {
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .data_container {
-  min-height: 90vh;
   margin: 3rem;
 }
 
@@ -35,8 +42,8 @@ body {
 
 .circle {
   position: absolute;
-  top: 24rem;
-  right: 19rem;
+  top: 12rem;
+  right: 23rem;
   animation-duration: 1s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
@@ -55,4 +62,8 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+.displayText {
+  display: none;
 }

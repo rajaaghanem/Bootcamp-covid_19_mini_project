@@ -6,35 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style/my_normalized.css" />
     <link rel="stylesheet" href="./style/style.css" />
+    <link
+      rel="stylesheet"
+      media="screen and (max-width: 800px)"
+      href="./style/media_query.css"
+    />
     <title>Document</title>
   </head>
   <body>
-    <div class="data_container">
-      <div class="data_container-continent">
-        <button class="Asia-button">Asia</button>
-        <button>Africa</button>
-        <button>Americas</button>
-        <button>Europe</button>
-        <button>Australia</button>
-      </div>
-      <div><button class="world-btn">World</button></div>
-      <div class="data_container_canvas">
-        <canvas class="data_container_chart"></canvas>
-      </div>
+    <h1 class="displayText">Please turn your phone to the side.</h1>
+    <div class="container">
+      <div class="data_container">
+        <div class="data_container-continent">
+          <button class="Asia-button">Asia</button>
+          <button>Africa</button>
+          <button>Americas</button>
+          <button>Europe</button>
+          <button>Australia</button>
+        </div>
+        <div><button class="world-btn">World</button></div>
+        <div class="data_container_canvas">
+          <canvas class="data_container_chart"></canvas>
+        </div>
 
-      <select
-        class="data_container-select visibilityHidden"
-        placeholder="country"
-      >
-        <option data-id="select country" value="" disabled selected>
-          select country
-        </option>
-      </select>
-    </div>
-    <div class="country_container visibilityHidden">
-      <div class="circle displayNone"></div>
-      <div class="data_container_canvas_country">
-        <canvas class="data_container_chart_country"></canvas>
+        <select
+          class="data_container-select visibilityHidden"
+          placeholder="country"
+        >
+          <option data-id="select country" value="" disabled selected>
+            select country
+          </option>
+        </select>
+      </div>
+      <div class="country_container visibilityHidden">
+        <div class="circle displayNone"></div>
+        <div class="data_container_canvas_country">
+          <canvas class="data_container_chart_country"></canvas>
+        </div>
       </div>
     </div>
   </body>
