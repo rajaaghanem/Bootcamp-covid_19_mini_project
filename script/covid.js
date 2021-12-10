@@ -1,15 +1,24 @@
+import { buildChart } from "./graph.js";
+
 // const { default: axios } = require("axios");
+// const asiaSet = new Set();
+// const africaSet = new Set();
+// const americasSet = new Set();
+// const europeSet = new Set();
+// const australiaSet = new Set();
+// const asia = {
+//   totalDeaths: 0,
+//   totalConfirmed: 0,
+//   totalRecovered: 0,
+//   totalCritical: 0,
+// };
 
-const asiaSet = new Set();
-const africaSet = new Set();
-const americasSet = new Set();
-const europeSet = new Set();
-const australiaSet = new Set();
+// save the code contry as a key & the conteint as the value.
+const conteintMap = new Map();
 
-const contienMap = new Map();
-
+// save the total deaths, confirmed, recovered & critical casses for each conteint.
 const conteintObj = {
-  // [totalD: 0, totalCo:0, totalCri:0, totalRecovered:0]
+  // conteint: [totalDeaths, totalConfirmed, totalCritical, totalRecovered].
   asia: [0, 0, 0, 0],
   africa: [0, 0, 0, 0],
   americas: [0, 0, 0, 0],
@@ -17,15 +26,7 @@ const conteintObj = {
   Oceania: [0, 0, 0, 0],
 };
 
-const asia = {
-  totalDeaths: 0,
-  totalConfirmed: 0,
-  totalRecovered: 0,
-  totalCritical: 0,
-};
-
-const notExistContry = [];
-
+// get the API for all the conteints and the world covid data.
 (async function getFetch() {
   const asiaData = axios.get(
     "https://intense-mesa-62220.herokuapp.com/https://restcountries.herokuapp.com/api/v1/region/asia"
@@ -62,15 +63,17 @@ const notExistContry = [];
   calcWorldData(results[5].data.data);
 })();
 
+// adding the code contry as a key & the conteint as the value for every contry.
 function addToHash(resultsArray, contientNum) {
   for (let i = 0; i < resultsArray.length; i++) {
-    contienMap.set(resultsArray[i].cca2, contientNum);
+    conteintMap.set(resultsArray[i].cca2, contientNum);
   }
 }
 
+// calculate the total deaths, confirmed, recovered & critical casses for each conteint.
 function calcWorldData(WorldDataArray) {
   for (let i = 0; i < WorldDataArray.length; i++) {
-    const contName = contienMap.get(`${WorldDataArray[i].code}`);
+    const contName = conteintMap.get(`${WorldDataArray[i].code}`);
     if (contName) {
       conteintObj[`${contName}`][0] += WorldDataArray[i].latest_data.deaths;
       conteintObj[`${contName}`][1] += WorldDataArray[i].latest_data.confirmed;
@@ -78,5 +81,4 @@ function calcWorldData(WorldDataArray) {
       conteintObj[`${contName}`][3] += WorldDataArray[i].latest_data.recovered;
     }
   }
-  //   console.log(conteintObj);
 }
