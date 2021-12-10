@@ -14,10 +14,12 @@ select.addEventListener("click", (e) => {
 
 // get country API by country code.
 async function getCountryAPI(countryCode) {
-  const countryData = await axios.get(
-    `https:///corona-api.com/countries/${countryCode}`
-  );
-  preparingForCountryChart(countryData.data.data.latest_data);
+  try {
+    const countryData = await axios.get(
+      `https:///corona-api.com/countries/${countryCode}`
+    );
+    preparingForCountryChart(countryData.data.data.latest_data);
+  } catch (error) {}
 }
 
 // preparing data for country chart.
