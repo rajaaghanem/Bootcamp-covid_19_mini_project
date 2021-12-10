@@ -22,40 +22,43 @@ export const conteintObj = {
 
 // get the API for all the conteints and the world covid data.
 (async function getFetch() {
-  const asiaData = axios.get(
-    "https://intense-mesa-62220.herokuapp.com/https://restcountries.herokuapp.com/api/v1/region/asia"
-  );
-  const africaData = axios.get(
-    "https://intense-mesa-62220.herokuapp.com/https://restcountries.herokuapp.com/api/v1/region/africa"
-  );
-  const americasData = axios.get(
-    "https://intense-mesa-62220.herokuapp.com/https://restcountries.herokuapp.com/api/v1/region/Americas"
-  );
-  const europeData = axios.get(
-    "https://intense-mesa-62220.herokuapp.com/https://restcountries.herokuapp.com/api/v1/region/europe"
-  );
-  const australiaData = axios.get(
-    "https://intense-mesa-62220.herokuapp.com/https://restcountries.herokuapp.com/api/v1/region/oceania"
-  );
-  const worldData = axios.get("https://corona-api.com/countries");
+  try {
+    const asiaData = axios.get(
+      "https://intense-mesa-62220.herokuapp.com/https://restcountries.herokuapp.com/api/v1/region/asia"
+    );
+    const africaData = axios.get(
+      "https://intense-mesa-62220.herokuapp.com/https://restcountries.herokuapp.com/api/v1/region/africa"
+    );
+    const americasData = axios.get(
+      "https://intense-mesa-62220.herokuapp.com/https://restcountries.herokuapp.com/api/v1/region/Americas"
+    );
+    const europeData = axios.get(
+      "https://intense-mesa-62220.herokuapp.com/https://restcountries.herokuapp.com/api/v1/region/europe"
+    );
+    const australiaData = axios.get(
+      "https://intense-mesa-62220.herokuapp.com/https://restcountries.herokuapp.com/api/v1/region/oceania"
+    );
+    const worldData = axios.get("https://corona-api.com/countries");
 
-  const results = await Promise.all([
-    asiaData,
-    africaData,
-    americasData,
-    europeData,
-    australiaData,
-    worldData,
-  ]);
+    const results = await Promise.all([
+      asiaData,
+      africaData,
+      americasData,
+      europeData,
+      australiaData,
+      worldData,
+    ]);
 
-  addToHash(results[0].data, "asia");
-  addToHash(results[1].data, "africa");
-  addToHash(results[2].data, "americas");
-  addToHash(results[3].data, "europe");
-  addToHash(results[4].data, "australia");
+    addToHash(results[0].data, "asia");
+    addToHash(results[1].data, "africa");
+    addToHash(results[2].data, "americas");
+    addToHash(results[3].data, "europe");
+    addToHash(results[4].data, "australia");
 
-  calcWorldData(results[5].data.data);
-  flagLoad = true;
+    calcWorldData(results[5].data.data);
+    flagLoad = true;
+    
+  } catch (error) {}
 })();
 
 // adding the code contry as a key & the conteint as the value for every contry.
