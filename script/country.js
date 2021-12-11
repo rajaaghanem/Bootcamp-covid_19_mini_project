@@ -13,6 +13,7 @@ select.addEventListener("click", (e) => {
   myChart2.destroy();
 });
 
+
 // get country API by country code.
 async function getCountryAPI(countryCode) {
   try {

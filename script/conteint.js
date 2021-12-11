@@ -46,3 +46,4 @@ export function addSelectionCountry(countryName, contientName, countryCode) {
   selection.setAttribute("value", countryCode);
   dataContainerSelect.appendChild(selection);
 }
+

@@ -65,7 +65,6 @@ export const conteintObj = {
 function addToHash(resultsArray, contientName) {
   for (let i = 0; i < resultsArray.length; i++) {
     conteintMap.set(resultsArray[i].cca2, contientName);
-    // console.log(resultsArray[i].name.common, contientName, resultsArray[i].cca2);
     addSelectionCountry(
       resultsArray[i].name.common,
       contientName,
