@@ -108,3 +108,4 @@ worldBtn.addEventListener("click", (e) => {
   select.classList.add("visibilityHidden");
   countryContainer.classList.add("visibilityHidden");
 });
+
